@@ -1,7 +1,8 @@
 from sense_hat import SenseHat
 
 sense = SenseHat()
-sense.clear()
+ 
+sense.set_rotation(270)
 
 # define colours
 B = (102,51,0)
