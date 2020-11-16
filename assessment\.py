@@ -2,9 +2,6 @@ from sense_hat import SenseHat
 import time
 sense = SenseHat()
 sense.clear()
-#to measure the temperature and pressure in the habbital areas of the International space station the sensehat will light up different colours to alert the reading
-green = (0,255,0)
-red = (255,0,0)
 
 while True:
    
@@ -17,19 +14,25 @@ while True:
     temp = round(temp,2)
     press = round(press,2)
     
+    
     print("temperature:",temp)
     print("pressure:",press)
  
     
-    pitch = round(o["pitch"])
+    pitch = o["pitch"]
     roll = o["roll"]
     yaw = o["yaw"]
     
-    print(f"Pitch;{pitch}  Roll:{roll}  Yaw:{yaw}")
-    message = "Temp:" + str(temp) + "Pressure:" + str(press) + "Pitch:" + str(pitch) + "Roll:" + str(roll) + "Yaw:" + str(yaw)
+    #rounds pitch, roll and yaw to 5 decimal places 
+    pitch = int(round(pitch,5))
+    roll = int(round(roll,5))
+    yaw = int(round(yaw,5))
+    
+    print(f"Pitch:{pitch}  Roll:{roll}  Yaw:{yaw}")
+    message = "Temp:" + str(temp) + " Pressure:" + str(press) + " Pitch:" + str(pitch) + " Roll:" + str(roll) + " Yaw:" + str(yaw)
     sense.show_message(message, scroll_speed = 0.10)
     #waits 30 seconds before reposting data
-    time.sleep(30)
+    time.sleep(20)
     
     
 
